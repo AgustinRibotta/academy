@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm border-danger">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4 text-danger">Confirm Account Deletion</h2>
+            <p class="text-center">Are you sure you want to delete your account? This action cannot be undone.</p>
+            <form method="post">
+              {% csrf_token %}
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-danger">Delete Account</button>
+                <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
