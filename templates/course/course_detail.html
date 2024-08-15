@@ -1,0 +1,48 @@
+<!-- course_detail.html -->
+{% extends "home.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Course Detail Section -->
+            <div class="col-md-8">
+                <div class="card shadow-sm border-light mb-4">
+                    <div class="card-body">
+                        <h1 class="card-title">{{ course.name }}</h1>
+                        <p class="card-text">{{ course.description }}</p>
+                        
+                        <!-- Render syllabus content as Markdown -->
+                        <div class="mt-4">
+                            <h5>Syllabus:</h5>
+                            <div class="markdown-content">
+                                {% comment %} {{ course.syllabus|markdownx }} {% endcomment %}
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <p><strong>Start Date:</strong> {{ course.start_date }}</p>
+                            <p><strong>End Date:</strong> {{ course.end_date }}</p>
+                        </div>
+
+                        <a href="#" class="btn btn-primary mt-3">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Courses Section -->
+            <div class="col-md-4">
+                <h4 class="mb-4">Related Courses</h4>
+                <div class="list-group">
+                    {% for related_course in related_courses %}
+                        <a href="{% url 'course_detail' related_course.id %}" class="list-group-item list-group-item-action">
+                            <h5 class="mb-1">{{ related_course.name }}</h5>
+                            <p class="mb-1">{{ related_course.description|slice:":100" }}{% if related_course.description|length > 100 %}...{% endif %}</p>
+                        </a>
+                    {% empty %}
+                        <p class="text-muted">No related courses available.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

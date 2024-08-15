@@ -138,11 +138,7 @@ AUTHENTICATION_BACKENDS = [
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Solo para desarrollo
 
 
-MARKDOWNX_MARKDOWN_EXTENSIONS = [
-    'markdown.extensions.extra',
-    'markdown.extensions.codehilite',
-    'markdown.extensions.toc',
-]
-
-MARKDOWNX_SERVER_URL = 'http://localhost:8000/markdownx/'
-MARKDOWNX_UPLOAD_URL = 'http://localhost:8000/markdownx/upload/'
+MARKDOWNX_MEDIA_PATH = 'markdownx/'
+MARKDOWNX_UPLOAD_URLS_PATH = 'markdownx/upload/'
+MARKDOWNX_EDITOR_RESIZABLE = False
+MARKDOWNX_SERVER_CALL_LATENCY = 1000
