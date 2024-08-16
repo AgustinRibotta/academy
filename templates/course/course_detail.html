@@ -2,6 +2,7 @@
 {% extends "home.html" %}
 
 {% block content %}
+
     <div class="container mt-5">
         <div class="row">
             <!-- Course Detail Section -->
@@ -15,7 +16,7 @@
                         <div class="mt-4">
                             <h5>Syllabus:</h5>
                             <div class="markdown-content">
-                                {% comment %} {{ course.syllabus|markdownx }} {% endcomment %}
+                              {{ course.syllabus_html | safe }}
                             </div>
                         </div>
 

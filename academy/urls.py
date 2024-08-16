@@ -21,5 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("student/",include('apps.students.urls')),
     path("",include('apps.course.urls')),
-    path('markdownx/', include('markdownx.urls')),
 ]

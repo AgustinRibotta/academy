@@ -11,7 +11,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-sm border-light">
                         <div class="card-body">
-                            <h5 class="card-title">{{ course.title }}</h5>
+                            <h5 class="card-title">{{ course.name }}</h5>
                             <p class="card-text">{{ course.description|slice:":150" }}{% if course.description|length > 150 %}...{% endif %}</p>
                             <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">View Details</a>
                         </div>

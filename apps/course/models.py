@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from markdownx.models import MarkdownxField
+
 
 # Create your models here.
 
@@ -8,7 +8,7 @@ class Course(models.Model):
 
     name = models.TextField(_("Course Name"))
     description = models.TextField(_("Desciption"))
-    syllabus = MarkdownxField()
+    syllabus = models.TextField(_("Syllabus"))
     start_date = models.DateField()
     end_date = models.DateField()
 

@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Academy - Home{% endblock %}</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    {% block extra_css %}
-    <link rel="stylesheet" href="style.css">
-    {% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    {% block extra_css %}{% endblock %}
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div class="container">
             <a class="navbar-brand" href="{% url 'home' %}">Academy</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -66,8 +62,7 @@
                 <div class="card shadow-sm border-light">
                     <div class="card-body">
                         <h5 class="card-title">Courses</h5>
-                        <p class="card-text">Explore a wide range of courses designed to enhance your skills and
-                            knowledge. From beginner to advanced levels, we have something for everyone.</p>
+                        <p class="card-text">Explore a wide range of courses designed to enhance your skills and knowledge. From beginner to advanced levels, we have something for everyone.</p>
                         <a href="{% url 'courses' %}" class="btn btn-primary">Browse Courses</a>
                     </div>
                 </div>
@@ -78,8 +73,7 @@
                 <div class="card shadow-sm border-light">
                     <div class="card-body">
                         <h5 class="card-title">About Us</h5>
-                        <p class="card-text">Learn more about our mission, vision, and values. Our academy is dedicated
-                            to providing top-notch education and support to help you achieve your goals.</p>
+                        <p class="card-text">Learn more about our mission, vision, and values. Our academy is dedicated to providing top-notch education and support to help you achieve your goals.</p>
                         {% comment %} <a href="{% url 'about' %}" class="btn btn-primary">Read More</a> {% endcomment %}
                     </div>
                 </div>
@@ -90,76 +84,69 @@
                 <div class="card shadow-sm border-light">
                     <div class="card-body">
                         <h5 class="card-title">Contact Us</h5>
-                        <p class="card-text">Get in touch with us for any questions or support you may need. We're here
-                            to help you succeed.</p>
-                        {% comment %} <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a> {% endcomment
-                        %}
+                        <p class="card-text">Get in touch with us for any questions or support you may need. We're here to help you succeed.</p>
+                        {% comment %} <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a> {% endcomment %}
                     </div>
                 </div>
             </div>
 
-            <!-- Featured Courses Section -->
-            <div class="row mb-5">
-                <div class="col-md-12">
-                    <h2 class="text-center mb-4">Featured Courses</h2>
-                    <div class="row">
-                        {% for course in courses %}
+        <!-- Featured Courses Section -->
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">Featured Courses</h2>
+                <div class="row">
+                    {% for course in courses %}
                         <div class="col-md-3 mb-4">
                             <div class="card shadow-sm border-light">
                                 <img src="{{ course.image_url }}" class="card-img-top" alt="{{ course.title }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ course.name }}</h5>
                                     <p class="card-text">{{ course.description }}</p>
-                                    {% comment %} <a href="{% url 'course_detail' course.id %}"
-                                        class="btn btn-primary">Learn More</a> {% endcomment %}
+                                    <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Learn More</a>
                                 </div>
                             </div>
                         </div>
-                        {% empty %}
+                    {% empty %}
                         <p class="text-center">No courses available at the moment.</p>
-                        {% endfor %}
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
-
         </div>
 
-        <!-- Why Choose Us Section -->
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <h2 class="text-center mb-4">Why Choose Us?</h2>
-                <div class="row">
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm border-light">
-                            <div class="card-body">
-                                <h5 class="card-title">Expert Instructors</h5>
-                                <p class="card-text">Our courses are taught by industry professionals with years of
-                                    experience. Learn from the best and gain practical skills that are in high demand.
-                                </p>
-                            </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Why Choose Us?</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm border-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Expert Instructors</h5>
+                            <p class="card-text">Our courses are taught by industry professionals with years of experience. Learn from the best and gain practical skills that are in high demand.</p>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm border-light">
-                            <div class="card-body">
-                                <h5 class="card-title">Flexible Learning</h5>
-                                <p class="card-text">We offer both online and in-person classes to fit your schedule.
-                                    Learn at your own pace with access to all course materials anytime, anywhere.</p>
-                            </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm border-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Flexible Learning</h5>
+                            <p class="card-text">We offer both online and in-person classes to fit your schedule. Learn at your own pace with access to all course materials anytime, anywhere.</p>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm border-light">
-                            <div class="card-body">
-                                <h5 class="card-title">Supportive Community</h5>
-                                <p class="card-text">Join a vibrant community of learners and professionals. Get support
-                                    from peers and mentors to help you succeed throughout your educational journey.</p>
-                            </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm border-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Supportive Community</h5>
+                            <p class="card-text">Join a vibrant community of learners and professionals. Get support from peers and mentors to help you succeed throughout your educational journey.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
         <!-- Testimonials Section -->
@@ -170,28 +157,22 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="d-block w-100 text-center p-4">
-                                <p class="lead">"The courses at this academy are incredible! I've gained so much
-                                    knowledge and confidence in my field. Highly recommend!"</p>
-                                <footer class="blockquote-footer">Jane Doe, <cite title="Source Title">Marketing
-                                        Specialist</cite></footer>
+                                <p class="lead">"The courses at this academy are incredible! I've gained so much knowledge and confidence in my field. Highly recommend!"</p>
+                                <footer class="blockquote-footer">Jane Doe, <cite title="Source Title">Marketing Specialist</cite></footer>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <div class="d-block w-100 text-center p-4">
-                                <p class="lead">"The instructors are highly knowledgeable and supportive. The academy's
-                                    resources are top-notch and have greatly contributed to my career growth."</p>
-                                <footer class="blockquote-footer">John Smith, <cite title="Source Title">Software
-                                        Engineer</cite></footer>
+                                <p class="lead">"The instructors are highly knowledgeable and supportive. The academy's resources are top-notch and have greatly contributed to my career growth."</p>
+                                <footer class="blockquote-footer">John Smith, <cite title="Source Title">Software Engineer</cite></footer>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
-                        data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
-                        data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -209,13 +190,9 @@
     </footer>
 
     <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     {% block extra_js %}
-    <script src="../static/js/main.js
-    "></script>
+    <script src="../static/js/main.js"></script>
     {% endblock %}
 </body>
-
 </html>
