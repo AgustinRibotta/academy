@@ -1,0 +1,27 @@
+{% extends "home.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Enrollment Confirmation</h4>
+        <p>{{ message }}</p>
+    </div>
+
+    {% if course %}
+    <div class="card mb-4">
+        {% comment %} <img src="{% static 'images/course-placeholder.jpg' %}" class="card-img-top" alt="Course Image"> {% endcomment %}
+        <div class="card-body">
+            <h5 class="card-title">{{ course.name }}</h5>
+            <p class="card-text">{{ course.description }}</p>
+            <p class="card-text">
+                <small class="text-muted">Start Date: {{ course.start_date }}</small><br>
+                <small class="text-muted">End Date: {{ course.end_date }}</small>
+            </p>
+            <a href="{% url 'courses' %}" class="btn btn-secondary">Back to Course List</a>
+            <!-- Botón para cancelar la inscripción -->
+            <a href="{% url 'unenroll' course.id %}" class="btn btn-danger">Unenroll from Course</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

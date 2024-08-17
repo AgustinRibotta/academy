@@ -25,7 +25,7 @@
                             <p><strong>End Date:</strong> {{ course.end_date }}</p>
                         </div>
 
-                        <a href="#" class="btn btn-primary mt-3">Enroll Now</a>
+                        <a href="{% url 'enroll_now' course.id %}" class="btn btn-primary mt-3">Enroll Now</a>
                     </div>
                 </div>
             </div>

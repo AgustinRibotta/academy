@@ -40,10 +40,12 @@ class LoginView(FormView):
     def get_success_url(self):
         return reverse_lazy('home')
 
+
 class LogoutView(FormView):
     def get(self, request, *args, **kwargs):
         auth_logout(request)
         return redirect('login')
+
 
 class StudentUpdateView(UpdateView):
     model = Student
@@ -54,6 +56,7 @@ class StudentUpdateView(UpdateView):
     def get_object(self, queryset=None):
         return Student.objects.get(user=self.request.user)
     
+
 class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = get_user_model()
     template_name = 'student/confirm_delete.html'
