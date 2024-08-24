@@ -1,12 +1,20 @@
-<!-- course_list.html -->
 {% extends "home.html" %}
 
 {% block content %}
     <div class="container mt-5">
         <h1 class="text-center mb-4">Courses</h1>
+        <!-- Courses Search Form -->
+        <form method="get" action="{% url 'courses' %}" class="mb-4">
+            <div class="input-group">
+                <input type="text" id="course-search" name="q" class="form-control" placeholder="Search for courses..." value="{{ request.GET.q }}">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
 
         <!-- Courses Grid -->
-        <div class="row">
+        <div id="search-results" class="row">
             {% for course in courses %}
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-sm border-light">
@@ -66,3 +74,4 @@
         </div>
     </div>
 {% endblock %}
+

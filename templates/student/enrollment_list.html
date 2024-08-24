@@ -1,0 +1,38 @@
+{% extends "home.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Your Enrolled Courses</h2>
+
+    {% if message %}
+        <div class="alert alert-info" role="alert">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    {% if enrollments %}
+        <ul class="list-group">
+            {% for enroll in enrollments %}
+                <li class="list-group-item">
+                    <h5>{{ enroll.course_id.name }}</h5>
+                    <p>{{ enroll.course_id.description }}</p>
+                    <p>
+                        <small class="text-muted">Start Date: {{ enroll.course_id.start_date }}</small><br>
+                        <small class="text-muted">End Date: {{ enroll.course_id.end_date }}</small>
+                    </p>
+                    
+                    <form method="post" action="{% url 'list_enroll' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="course_id" value="{{ enroll.course_id.id }}">
+                        <button type="submit" class="btn btn-danger">Unenroll from Course</button>
+                        <a href="{% url 'course_detail' enroll.course_id.id %}" class="btn btn-primary">View Details</a>
+                    </form>
+                    
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You are not currently enrolled in any courses.</p>
+    {% endif %}
+</div>
+{% endblock %}

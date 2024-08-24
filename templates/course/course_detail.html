@@ -2,7 +2,6 @@
 {% extends "home.html" %}
 
 {% block content %}
-
     <div class="container mt-5">
         <div class="row">
             <!-- Course Detail Section -->
@@ -16,7 +15,7 @@
                         <div class="mt-4">
                             <h5>Syllabus:</h5>
                             <div class="markdown-content">
-                              {{ course.syllabus_html | safe }}
+                                {{ course.syllabus_html | safe }}
                             </div>
                         </div>
 
@@ -24,26 +23,30 @@
                             <p><strong>Start Date:</strong> {{ course.start_date }}</p>
                             <p><strong>End Date:</strong> {{ course.end_date }}</p>
                         </div>
-
-                        <a href="{% url 'enroll_now' course.id %}" class="btn btn-primary mt-3">Enroll Now</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'enroll_now' course.id %}" class="btn btn-primary mt-3">Enroll Now</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
 
-            <!-- Related Courses Section -->
+            <!-- Platform and Join URL Section -->
+            {% if user.is_authenticated %} 
             <div class="col-md-4">
-                <h4 class="mb-4">Related Courses</h4>
-                <div class="list-group">
-                    {% for related_course in related_courses %}
-                        <a href="{% url 'course_detail' related_course.id %}" class="list-group-item list-group-item-action">
-                            <h5 class="mb-1">{{ related_course.name }}</h5>
-                            <p class="mb-1">{{ related_course.description|slice:":100" }}{% if related_course.description|length > 100 %}...{% endif %}</p>
-                        </a>
-                    {% empty %}
-                        <p class="text-muted">No related courses available.</p>
-                    {% endfor %}
+                <div class="card shadow-sm border-light mb-4">
+                    <div class="card-body">
+                        {% if course.platform %}
+                            <h5 class="card-title">Platform</h5>
+                            <p><strong>{{ course.platform }}</strong></p>
+                        {% endif %}
+                        {% if course.join_url %}
+                            <h5 class="card-title">Join URL</h5>
+                            <a href="{{ course.join_url }}" target="_blank">{{ course.join_url }}</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

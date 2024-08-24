@@ -22,7 +22,7 @@ media
 
 # C extensions
 *.so
-
+datos.sql
 # Distribution / packaging
 .Python
 build/

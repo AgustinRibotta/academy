@@ -7,21 +7,25 @@
         <p>{{ message }}</p>
     </div>
 
-    {% if course %}
-    <div class="card mb-4">
-        {% comment %} <img src="{% static 'images/course-placeholder.jpg' %}" class="card-img-top" alt="Course Image"> {% endcomment %}
-        <div class="card-body">
-            <h5 class="card-title">{{ course.name }}</h5>
-            <p class="card-text">{{ course.description }}</p>
-            <p class="card-text">
-                <small class="text-muted">Start Date: {{ course.start_date }}</small><br>
-                <small class="text-muted">End Date: {{ course.end_date }}</small>
-            </p>
-            <a href="{% url 'courses' %}" class="btn btn-secondary">Back to Course List</a>
-            <!-- Botón para cancelar la inscripción -->
-            <a href="{% url 'unenroll' course.id %}" class="btn btn-danger">Unenroll from Course</a>
-        </div>
-    </div>
+    {% if all_enrollments %}
+        <h5>Your Enrolled Courses:</h5>
+        {% for enroll in all_enrollments %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ enroll.course_id.name }}</h5>
+                    <p class="card-text">{{ enroll.course_id.description }}</p>
+                    <p class="card-text">
+                        <small class="text-muted">Start Date: {{ enroll.course_id.start_date }}</small><br>
+                        <small class="text-muted">End Date: {{ enroll.course_id.end_date }}</small>
+                    </p>
+                    <a href="{% url 'courses' %}" class="btn btn-secondary">Back to Course List</a>
+                    <!-- Button to unenroll from the course -->
+                    <a href="{% url 'unenroll' enroll.course_id.id %}" class="btn btn-danger">Unenroll from Course</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>You are not enrolled in any courses currently.</p>
     {% endif %}
 </div>
 {% endblock %}

@@ -21,7 +21,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+                    </li>
+                    <li class="nav-item">
                         {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'list_enroll' %}">My Courses</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'student_update' %}">Update Profile</a>
                     </li>
                     <li class="nav-item">
@@ -54,42 +63,6 @@
                 <a href="{% url 'courses' %}" class="btn btn-light btn-lg">Explore Courses</a>
             </div>
         </div>
-
-        <!-- Features Section -->
-        <div class="row mb-5">
-            <!-- Courses Card -->
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-light">
-                    <div class="card-body">
-                        <h5 class="card-title">Courses</h5>
-                        <p class="card-text">Explore a wide range of courses designed to enhance your skills and knowledge. From beginner to advanced levels, we have something for everyone.</p>
-                        <a href="{% url 'courses' %}" class="btn btn-primary">Browse Courses</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- About Us Card -->
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-light">
-                    <div class="card-body">
-                        <h5 class="card-title">About Us</h5>
-                        <p class="card-text">Learn more about our mission, vision, and values. Our academy is dedicated to providing top-notch education and support to help you achieve your goals.</p>
-                        {% comment %} <a href="{% url 'about' %}" class="btn btn-primary">Read More</a> {% endcomment %}
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Us Card -->
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-light">
-                    <div class="card-body">
-                        <h5 class="card-title">Contact Us</h5>
-                        <p class="card-text">Get in touch with us for any questions or support you may need. We're here to help you succeed.</p>
-                        {% comment %} <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a> {% endcomment %}
-                    </div>
-                </div>
-            </div>
-
         <!-- Featured Courses Section -->
         <div class="row mb-5">
             <div class="col-md-12">
